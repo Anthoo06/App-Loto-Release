@@ -1,4 +1,3 @@
-Version 1.7
+Version 1.8
 
-- Mise à jour depuis l'app comme en 1.3 : téléchargement dans l'app, puis installation directe.
-- Message « Mise à jour installée » au premier lancement après une mise à jour.
+- Jeu : le bandeau du carton le plus proche est juste au-dessus du tableau des numéros.
