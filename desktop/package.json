@@ -1,0 +1,53 @@
+{
+  "name": "loto",
+  "productName": "Loto",
+  "version": "2.0.0",
+  "description": "Suivi des parties de loto",
+  "author": "Loto",
+  "private": true,
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "dist": "electron-builder --win --x64"
+  },
+  "devDependencies": {
+    "electron": "33.4.11",
+    "electron-builder": "25.1.8",
+    "png-to-ico": "^2.1.8",
+    "resedit": "^2.0.3"
+  },
+  "build": {
+    "appId": "fr.loto.desktop",
+    "productName": "Loto",
+    "directories": {
+      "output": "dist"
+    },
+    "files": [
+      "main.js",
+      "preload.js",
+      "www/**/*"
+    ],
+    "win": {
+      "target": [
+        {
+          "target": "nsis",
+          "arch": [
+            "x64"
+          ]
+        }
+      ],
+      "icon": "icon.png",
+      "artifactName": "Loto-Setup-${version}.${ext}",
+      "signAndEditExecutable": false
+    },
+    "nsis": {
+      "oneClick": false,
+      "perMachine": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "shortcutName": "Loto"
+    },
+    "afterPack": "./afterPack.js"
+  }
+}

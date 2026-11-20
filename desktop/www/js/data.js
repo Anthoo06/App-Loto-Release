@@ -1,0 +1,1 @@
+window.LOTO_SEED={event:"",owners:{},cards:[]};

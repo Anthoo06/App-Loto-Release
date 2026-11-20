@@ -1,8 +1,11 @@
+# Publie une release à chaque nouvelle version (fichier VERSION) :
+#   Windows - Loto-Setup-x.y.z.exe  (construit ici à partir de desktop/)
+#   Android - Loto.apk
 name: Release
 on:
   push:
     branches: [main]
-    paths: ["Loto.apk", "VERSION"]
+    paths: ["Loto.apk", "VERSION", "desktop/**"]
   workflow_dispatch:
 permissions:
   contents: write
@@ -11,9 +14,33 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - env:
+      - name: Version déjà publiée ?
+        id: v
+        env:
           GH_TOKEN: ${{ github.token }}
         run: |
           V="v$(tr -d '[:space:]' < VERSION)"
-          if gh release view "$V" >/dev/null 2>&1; then echo "$V existe déjà"; exit 0; fi
-          gh release create "$V" Loto.apk --target "$GITHUB_SHA" --title "Loto ${V#v}" --notes-file NOTES.md
+          echo "tag=$V" >> "$GITHUB_OUTPUT"
+          if gh release view "$V" >/dev/null 2>&1; then echo "exists=1" >> "$GITHUB_OUTPUT"; else echo "exists=0" >> "$GITHUB_OUTPUT"; fi
+      - uses: actions/setup-node@v4
+        if: steps.v.outputs.exists == '0'
+        with:
+          node-version: 20
+      - name: Installeur Windows
+        if: steps.v.outputs.exists == '0'
+        working-directory: desktop
+        run: |
+          sudo apt-get update -qq && sudo apt-get install -y -qq nsis python3-pil
+          python3 -c "from PIL import Image; Image.open('icon.png').convert('RGBA').save('icon.ico', sizes=[(16,16),(24,24),(32,32),(48,48),(64,64),(128,128),(256,256)])"
+          npm ci --no-audit --no-fund
+          npx electron-builder --win dir --x64 --publish never
+          makensis -V2 -DVERSION="$(node -p "require('./package.json').version")" installer.nsi
+      - name: Créer la release
+        if: steps.v.outputs.exists == '0'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          EXE=$(ls desktop/dist/Loto-Setup-*.exe)
+          V="${{ steps.v.outputs.tag }}"
+          gh release create "$V" "$EXE#Windows - $(basename "$EXE")" "Loto.apk#Android - Loto.apk" \
+            --target "$GITHUB_SHA" --title "Loto ${V#v}" --notes-file NOTES.md
