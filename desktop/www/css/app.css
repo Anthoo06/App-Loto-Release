@@ -464,7 +464,6 @@ button,.board,.tk,.chip,.tab,.opt{-webkit-user-select:none;user-select:none;-web
 }
 
 /* « Finir la partie » : petit, sous le jeton du dernier numéro, à droite */
-.party-row{display:flex;justify-content:flex-end;margin-top:-4px}
 .endbtn.party.win{background:var(--accent);border-color:var(--accent);color:#fff;opacity:1}
 html[data-skin="v"] .endbtn.party.win{background:var(--accent);border-color:var(--accent)}
 
@@ -512,3 +511,7 @@ html[data-skin="v"] .lv-tk .tk .c{height:44px;font-size:26px}
   .lv-cam{flex:1.2;height:calc(100vh - 140px)}
   .lv-side{flex:1;min-width:0}
 }
+
+.tools .endbtn.party{font-size:14px;padding:9px 14px;opacity:1;color:var(--ink)}
+html[data-skin="v"] .tools .endbtn.party{font-size:16px;padding:8px 12px}
+.tools .endbtn.party.win{color:#fff}
