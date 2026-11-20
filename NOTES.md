@@ -1,6 +1,6 @@
-Version 1.1
+Version 1.2
 
-- Vérification automatique des mises à jour au lancement : l'app propose d'installer la nouvelle version.
-- Sauvegarde automatique des données à chaque changement de version, restaurable dans Réglages.
-
-**Installer** : télécharger `Loto.apk` sur le téléphone Android, l'ouvrir, autoriser les applications inconnues si Android le demande.
+- Scanner : cadrage photo utilisable sur téléphone (photo entière visible, page qui défile), coins automatiques plus fiables sur les photos en haute définition, toutes les cases douteuses signalées en rouge.
+- Attribution : un joueur retiré de la soirée ne garde plus ses cartons ; « Comme la série » fonctionne carton par carton.
+- Plus rapide : polices intégrées (plus besoin d'internet), liste des cartons plus fluide.
+- Corrections diverses.
