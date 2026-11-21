@@ -515,3 +515,9 @@ html[data-skin="v"] .lv-tk .tk .c{height:44px;font-size:26px}
 .tools .endbtn.party{font-size:14px;padding:9px 14px;opacity:1;color:var(--ink)}
 html[data-skin="v"] .tools .endbtn.party{font-size:16px;padding:8px 12px}
 .tools .endbtn.party.win{color:#fff}
+
+/* écran assombri (économie) : un voile sombre ; sur Android c'est la luminosité qui baisse, le voile reste transparent */
+#dim{position:fixed;inset:0;z-index:99999;background:rgba(0,0,0,.86);touch-action:none}
+#dim.native{background:transparent}
+.filebtn{position:relative;overflow:hidden;cursor:pointer}
+.filebtn input{position:absolute;inset:0;opacity:0;cursor:pointer;width:100%}

@@ -1,6 +1,6 @@
 // App Loto pour PC : fenêtre qui affiche l'app (dossier www), sans connexion.
 // Les données (localStorage) restent dans le dossier utilisateur de l'app et sont gardées lors des mises à jour.
-const { app, BrowserWindow, shell, Menu, ipcMain, session } = require("electron");
+const { app, BrowserWindow, shell, Menu, ipcMain, session, powerSaveBlocker } = require("electron");
 const path = require("path");
 
 if (!app.requestSingleInstanceLock()) app.quit();
@@ -25,6 +25,12 @@ function createWindow() {
     if (input.control && input.key.toLowerCase() === "r") { win.reload(); e.preventDefault(); }
   });
 }
+// écran allumé pendant le jeu (réglage « Économie » ou « Toujours allumé »)
+let blocker = null;
+ipcMain.on("keep-awake", (e, on) => {
+  if (on && blocker === null) blocker = powerSaveBlocker.start("prevent-display-sleep");
+  else if (!on && blocker !== null) { powerSaveBlocker.stop(blocker); blocker = null; }
+});
 ipcMain.on("open-url", (e, url) => { if (/^https:\/\/github\.com\//.test(url)) shell.openExternal(url); });
 app.on("second-instance", () => { if (win) { if (win.isMinimized()) win.restore(); win.focus(); } });
 app.whenReady().then(() => {
