@@ -1,1 +1,1 @@
-window.LOTO_VERSION = "2.9";
+window.LOTO_VERSION = "2.10";

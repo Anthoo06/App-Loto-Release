@@ -455,11 +455,11 @@ button,.board,.tk,.chip,.tab,.opt{-webkit-user-select:none;user-select:none;-web
 @media (min-width: 760px) and (orientation: portrait) {
   .in.jeu { grid-template-columns: minmax(0, 1fr); grid-template-rows: minmax(0, 1fr) minmax(0, 1.15fr); grid-template-areas: "side" "board"; row-gap: 10px }
   html[data-swap="1"] .in.jeu { grid-template-rows: minmax(0, 1.15fr) minmax(0, 1fr); grid-template-areas: "board" "side" }
-  /* les cartons sur deux colonnes ; titres, numéros à guetter et classement sur toute la largeur */
-  .a-side { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; align-content: start }
-  .a-side > .sec, .a-side > .watch, .a-side > .row, .a-side > .lb, .a-side > .pl-open { grid-column: 1 / -1 }
-  .a-side > .sec { margin: 6px 0 -2px }
-  .a-side > .tick + .tick { margin-top: 0 }
+  /* les cartons sur deux colonnes ; titres, numéros à surveiller et classement sur toute la largeur */
+  html[data-cols="2"] .a-side { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; align-content: start }
+  html[data-cols="2"] .a-side > .sec, html[data-cols="2"] .a-side > .watch, html[data-cols="2"] .a-side > .row, html[data-cols="2"] .a-side > .lb, html[data-cols="2"] .a-side > .pl-open { grid-column: 1 / -1 }
+  html[data-cols="2"] .a-side > .sec { margin: 6px 0 -2px }
+  html[data-cols="2"] .a-side > .tick + .tick { margin-top: 0 }
 }
 
 /* « Finir la partie » : petit, sous le jeton du dernier numéro, à droite */
@@ -642,11 +642,24 @@ html[data-big="1"] .a-board > .sec{min-height:42px}
 
 /* tablette / PC en paysage : les cartons de gauche sur deux colonnes (comme en portrait) */
 @media (min-width:760px) and (orientation:landscape){
-  .a-side{display:grid;grid-template-columns:1fr 1fr;gap:10px;align-content:start}
-  .a-side > .sec,.a-side > .watch,.a-side > .row,.a-side > .lb,.a-side > .pl-open,.a-side > .chips{grid-column:1 / -1}
-  .a-side > .sec{margin:6px 0 -2px}
-  .a-side > .tick + .tick{margin-top:0}
+  html[data-cols="2"] .a-side{display:grid;grid-template-columns:1fr 1fr;gap:10px;align-content:start}
+  html[data-cols="2"] .a-side > .sec,html[data-cols="2"] .a-side > .watch,html[data-cols="2"] .a-side > .row,html[data-cols="2"] .a-side > .lb,html[data-cols="2"] .a-side > .pl-open,html[data-cols="2"] .a-side > .chips{grid-column:1 / -1}
+  html[data-cols="2"] .a-side > .sec{margin:6px 0 -2px}
+  html[data-cols="2"] .a-side > .tick + .tick{margin-top:0}
 }
-@media (min-width:760px) and (orientation:portrait){ .a-side > .chips{grid-column:1 / -1} }
+@media (min-width:760px) and (orientation:portrait){ html[data-cols="2"] .a-side > .chips{grid-column:1 / -1} }
 
 @media (min-width:760px){ .a-side > .chips{overflow:visible;flex-wrap:wrap} }
+
+/* téléphone : cartons sur deux colonnes (réglage), plus petits */
+@media (max-width:759px){
+  html[data-cols="2"] .a-side{display:grid;grid-template-columns:1fr 1fr;gap:8px;align-content:start}
+  html[data-cols="2"] .a-side > .sec,html[data-cols="2"] .a-side > .watch,html[data-cols="2"] .a-side > .row,html[data-cols="2"] .a-side > .lb,html[data-cols="2"] .a-side > .pl-open,html[data-cols="2"] .a-side > .chips{grid-column:1 / -1}
+  html[data-cols="2"] .a-side > .tick + .tick{margin-top:0}
+  html[data-cols="2"] .a-side .tick{padding:4px;border-radius:10px}
+  html[data-cols="2"] .a-side .tick-h{font-size:11px;min-height:22px;padding-bottom:3px}
+  html[data-cols="2"] .a-side .tag{font-size:10px;padding:1px 6px}
+  html[data-cols="2"] .a-side .tk .c{font-size:12px;height:24px}
+  html[data-cols="2"] .a-side .tk .c.hit::before{width:19px;height:19px}
+  html[data-big="1"][data-cols="2"] .a-side .tk .c{font-size:14px;height:28px}
+}
