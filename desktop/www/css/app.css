@@ -419,7 +419,6 @@ button,.board,.tk,.chip,.tab,.opt{-webkit-user-select:none;user-select:none;-web
 .pbar i{display:block;height:100%;background:var(--accent);border-radius:6px;transition:width .2s}
 
 /* bandeau du meilleur carton, juste au-dessus du tableau */
-.a-best{margin-bottom:10px}
 
 /* grands écrans : aperçus de thème, barre Retour/Suivant centrée, trophées en lignes complètes */
 @media (min-width: 760px) {
@@ -626,3 +625,28 @@ html[data-big="1"] .opt{font-size:17px}
 .chips.follow{align-items:center;margin-top:12px}
 .chips.follow .fl{font-size:12px;font-weight:900;text-transform:uppercase;letter-spacing:.07em;color:var(--muted);padding-right:2px}
 html[data-skin="v"] .chips.follow .fl{font-size:15px;font-weight:700}
+
+/* meilleur carton : sur la ligne « Tirage … 12/90 », entre le titre et le compteur */
+.a-board > .sec{align-items:center;min-height:34px}
+.sec .bnr{flex:1 1 0;min-width:0;margin:0 2px;padding:5px 12px;border-radius:99px;background:var(--ink);color:#fff;font:800 13px/1.2 var(--ui);letter-spacing:0;text-transform:none;white-space:nowrap;display:flex;overflow:hidden}
+.bnr .nm{min-width:0;flex:0 1 auto;overflow:hidden;text-overflow:ellipsis}
+.bnr .mq{flex:none}
+.sec .bnr b{color:var(--hi)}
+.sec .bnr.win{background:var(--accent);animation:pop .5s ease}
+.sec .bnr.win b{color:#fff}
+.bnr .bid{display:none}
+@media (min-width:760px){.bnr .bid{display:block}.sec .bnr{font-size:15px}}
+html[data-skin="v"] .sec .bnr{border-radius:8px;font:700 16px/1.2 var(--ui);letter-spacing:.02em}
+html[data-big="1"] .sec .bnr{font-size:16px;padding:7px 13px}
+html[data-big="1"] .a-board > .sec{min-height:42px}
+
+/* tablette / PC en paysage : les cartons de gauche sur deux colonnes (comme en portrait) */
+@media (min-width:760px) and (orientation:landscape){
+  .a-side{display:grid;grid-template-columns:1fr 1fr;gap:10px;align-content:start}
+  .a-side > .sec,.a-side > .watch,.a-side > .row,.a-side > .lb,.a-side > .pl-open,.a-side > .chips{grid-column:1 / -1}
+  .a-side > .sec{margin:6px 0 -2px}
+  .a-side > .tick + .tick{margin-top:0}
+}
+@media (min-width:760px) and (orientation:portrait){ .a-side > .chips{grid-column:1 / -1} }
+
+@media (min-width:760px){ .a-side > .chips{overflow:visible;flex-wrap:wrap} }

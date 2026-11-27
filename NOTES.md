@@ -1,4 +1,5 @@
-Version 2.8
+Version 2.9
 
 Jeu
-- « Suivre » : on choisit les joueurs dont on veut voir les cartons les plus proches (un ou plusieurs ; « Tous » pour tout le monde). « À guetter », le classement et la vibration « plus qu'un numéro » ne concernent que les joueurs suivis ; un gain, lui, est toujours annoncé.
+- Le meilleur carton (« Kathia · manque 4 », ou « QUINE ! … ») s'affiche sur la ligne « Tirage », entre le titre et le compteur : le tableau des numéros ne se décale plus et ne rétrécit plus quand il apparaît (téléphone et tablette).
+- Tablette et PC en paysage : les cartons les plus proches sont sur deux colonnes, 12 au maximum.
