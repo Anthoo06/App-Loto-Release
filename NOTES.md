@@ -1,6 +1,5 @@
-Version 2.11
+Version 2.12
 
 Jeu
-- Cartons : les numéros ne sont plus collés (taille adaptée à la largeur du carton, ronds proportionnés, traits plus marqués) et l'en-tête de chaque carton tient sur une ligne (la ligne visée n'est plus écrite ; les autres lignes restent estompées).
-- Tablette et PC larges : le menu de gauche se masque en jeu (« Masquer » en bas du menu, « ☰ » en haut à gauche pour le rouvrir). Masqué, les cartons prennent toute la largeur et les numéros sont plus grands.
-- Titres et boutons en majuscules de titre (« Les Plus Proches », « Finir la Partie »…).
+- « Afficher moins » à côté de « Afficher plus » : on revient pas à pas à la liste de départ.
+- Menu de gauche (tablette et PC larges) : « Masquer » dans le menu rouvert avec ☰, et choix « Menu de gauche visible / masqué en jeu » en premier dans Réglages → Disposition du Jeu.

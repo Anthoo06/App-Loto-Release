@@ -685,7 +685,6 @@ html[data-skin="v"] .tick .tk .c.c.need{box-shadow:none}
   #tabbar .navbtn svg{transition:transform .2s}
   html[data-nav="0"] #tabbar:not(.peek){display:none}
   html[data-nav="0"] #tabbar.peek{position:fixed;left:0;top:0;bottom:0;z-index:60;box-shadow:6px 0 24px rgba(0,0,0,.35)}
-  html[data-nav="0"] #tabbar.peek .navbtn svg{transform:rotate(180deg)}
   #navopen{display:flex;position:fixed;left:10px;top:calc(env(safe-area-inset-top,0px) + 10px);z-index:30;width:44px;height:44px;border-radius:14px;background:var(--tab-bg);color:var(--tab-on);align-items:center;justify-content:center;box-shadow:0 3px 10px rgba(0,0,0,.25)}
   #navopen svg{width:24px;height:24px}
   #navbd{display:block;position:fixed;inset:0;z-index:50;background:rgba(0,0,0,.28);cursor:default}
