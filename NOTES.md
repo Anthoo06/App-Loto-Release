@@ -1,5 +1,6 @@
-Version 2.10
+Version 2.11
 
 Jeu
-- Cartons en jeu sur 1 ou 2 colonnes, au choix dans Réglages → « Cartons en jeu » : 1 colonne par défaut sur téléphone, 2 sur tablette et PC (jusqu'à 12 cartons).
-- « À guetter » devient « À surveiller ».
+- Cartons : les numéros ne sont plus collés (taille adaptée à la largeur du carton, ronds proportionnés, traits plus marqués) et l'en-tête de chaque carton tient sur une ligne (la ligne visée n'est plus écrite ; les autres lignes restent estompées).
+- Tablette et PC larges : le menu de gauche se masque en jeu (« Masquer » en bas du menu, « ☰ » en haut à gauche pour le rouvrir). Masqué, les cartons prennent toute la largeur et les numéros sont plus grands.
+- Titres et boutons en majuscules de titre (« Les Plus Proches », « Finir la Partie »…).

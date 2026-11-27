@@ -663,3 +663,39 @@ html[data-big="1"] .a-board > .sec{min-height:42px}
   html[data-cols="2"] .a-side .tk .c.hit::before{width:19px;height:19px}
   html[data-big="1"][data-cols="2"] .a-side .tk .c{font-size:14px;height:28px}
 }
+
+/* cartons de la partie : numéros jamais collés, quelle que soit la largeur du carton (2 colonnes, affichage agrandi…) */
+.tick .tk{container-type:inline-size}
+html{--tkf:17px}
+html[data-skin="v"]{--tkf:19px}
+html[data-big="1"]{--tkf:24px}
+html[data-big="1"][data-skin="v"]{--tkf:26px}
+html[data-skin] .tick .tk .c.c{font-size:min(var(--tkf), 7.4cqw)}
+html[data-skin] .tick .tk .c.c.hit::before{width:min(1.5em, 9.2cqw);height:min(1.5em, 9.2cqw)}
+html[data-skin] .tick .tk .c.c{border-right-color:rgba(80,70,90,.55);border-bottom-color:rgba(80,70,90,.55)}
+html[data-skin] .tick .tk .c.c.need{box-shadow:inset 0 0 0 1px rgba(80,70,90,.5)}
+html[data-skin="v"] .tick .tk .c.c{border:0}
+html[data-skin="v"] .tick .tk .c.c.need{box-shadow:none}
+.panel > .chips{flex-wrap:wrap;overflow:visible}
+
+/* menu de gauche masquable en jeu (tablette / PC large) : « Masquer » en bas du menu ; masqué, « ☰ » en haut à gauche le rouvre par-dessus l'écran */
+.navbtn,#navopen,#navbd{display:none}
+@media (min-width:1000px){
+  .navbtn{display:flex;margin-top:auto;color:var(--tab-ink)}
+  #tabbar .navbtn svg{transition:transform .2s}
+  html[data-nav="0"] #tabbar:not(.peek){display:none}
+  html[data-nav="0"] #tabbar.peek{position:fixed;left:0;top:0;bottom:0;z-index:60;box-shadow:6px 0 24px rgba(0,0,0,.35)}
+  html[data-nav="0"] #tabbar.peek .navbtn svg{transform:rotate(180deg)}
+  #navopen{display:flex;position:fixed;left:10px;top:calc(env(safe-area-inset-top,0px) + 10px);z-index:30;width:44px;height:44px;border-radius:14px;background:var(--tab-bg);color:var(--tab-on);align-items:center;justify-content:center;box-shadow:0 3px 10px rgba(0,0,0,.25)}
+  #navopen svg{width:24px;height:24px}
+  #navbd{display:block;position:fixed;inset:0;z-index:50;background:rgba(0,0,0,.28);cursor:default}
+  /* menu masqué : tout passe à gauche, les cartons suivis prennent plus de place (et des numéros un peu plus grands) */
+  html[data-nav="0"] #main[data-view="jeu"] .in{max-width:none}
+  html[data-nav="0"] #main[data-view="jeu"] .hd .in{padding-left:68px}
+  html[data-nav="0"]{--tkf:19px}
+  html[data-nav="0"][data-big="1"]{--tkf:26px}
+}
+@media (min-width:1000px) and (orientation:landscape){
+  html[data-nav="0"] .in.jeu{grid-template-columns:minmax(0,1.3fr) minmax(0,1fr)}
+  html[data-nav="0"][data-swap="1"] .in.jeu{grid-template-columns:minmax(0,1fr) minmax(0,1.3fr)}
+}
