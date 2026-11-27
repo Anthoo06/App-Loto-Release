@@ -1,7 +1,7 @@
 {
   "name": "loto",
   "productName": "Loto",
-  "version": "2.7.0",
+  "version": "2.8.0",
   "description": "Suivi des parties de loto",
   "author": "Loto",
   "private": true,

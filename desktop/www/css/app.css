@@ -621,3 +621,8 @@ html[data-big="1"] .opt{font-size:17px}
   html[data-big="1"] .a-board .board .n{font-size:clamp(20px,3vmin,36px)}
   html[data-big="1"][data-skin="v"] .a-board .board .n{font-size:clamp(22px,3.4vmin,40px)}
 }
+
+/* suivre un joueur */
+.chips.follow{align-items:center;margin-top:12px}
+.chips.follow .fl{font-size:12px;font-weight:900;text-transform:uppercase;letter-spacing:.07em;color:var(--muted);padding-right:2px}
+html[data-skin="v"] .chips.follow .fl{font-size:15px;font-weight:700}
